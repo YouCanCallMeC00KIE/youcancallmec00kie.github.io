@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <style>
+            body 
+            { 
+                overflow: hidden;
+            }
+
+            .panel
+            {
+                background-color: rgba( 255, 0, 0, 0 );
+            }
+
+            .hidden 
+            {
+                display: none;
+            }
+        </style>
+        <script>
+
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams( queryString );
+
+            //for positioning this in obs, it may be necessary to toggle this to true temporarily so the image will always display
+            var alwaysShow = false;
+
+            if( urlParams.has( 'alwaysShow' ) )
+            {
+                alwaysShow = urlParams.get( 'alwaysShow' );
+            }
+
+            //image to show
+            var imgSrc = "./images/button.gif";
+
+            /*
+                how long the image should be shown for when it shows
+                if a gif, this should be set to the animation length 
+                of the gif
+            */
+            var secondsToShowImage = 3;
+
+            if( urlParams.has( 'imageDisplaySeconds' ) )
+            {
+                secondsToShowImage = urlParams.get( 'imageDisplaySeconds' );
+            }
+
+            var secToMilli = secondsToShowImage * 1000;
+
+            //number of minutes between re-showing the image
+            var minutesToStayHidden = 5;
+
+            if( urlParams.has( 'imageHideMinutes' ) )
+            {
+                minutesToStayHidden = urlParams.get( 'imageHideMinutes' );
+            }
+
+            var minToMilli = minutesToStayHidden * 60 * 1000;
+
+            function onLoad()
+            {
+                showButton(); 
+            }
+
+            function showButton()
+            {
+                document.getElementsByClassName( 'gif' )[0].src = imgSrc;
+                document.getElementsByClassName( 'panel' )[0].classList.remove( "hidden" );
+
+                if( alwaysShow == false )
+                {
+                    setTimeout( hideButton, secToMilli );
+                }
+            }
+
+            function hideButton()
+            {
+                document.getElementsByClassName( 'gif' )[0].src = "";
+                document.getElementsByClassName( 'panel' )[0].classList.add( "hidden" );
+
+                setTimeout( showButton, minToMilli );
+            }
+
+            window.onload = onLoad;
+        </script>
+    </head>
+    <body>
+        <div class="panel hidden">
+            <img class="gif" src="">
+        </div>
+    </body>
+</html>
