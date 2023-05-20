@@ -6,6 +6,34 @@ Any files here created and provided by me for free. If you wish to support me, p
 
 The rest of the documentation will cover the various overlays and how to use them.
 
+## Random Number
+
+The random number widget generates a random number that can be used for raffles or various other viewer interactions.
+
+**Adding the Widget to OBS**
+
+Simply add the widget as a browser source, and point it to `https://youcancallmec00kie.github.io/random-number.html`. By default this will generate random numbers between 1 and 100 (inclusive). You can refresh the source in OBS to have it regenerate the number.
+
+To customize this further, it supports the following variable added to the URL. Here is an example URL doing that `https://youcancallmec00kie.github.io/random-number.html?maxNumber=200`. This will make it so the numbers generted are now from 1 to 200 (inclusive).
+
+- **maxNumber** - This is the max number the widget will generate. This means the number generated can be this max number.
+
+**Detailed OBS Instruction**
+
+Here's a bit more details on how to actually add this in OBS if you're unfamiliar.
+
+First, just go to the sources for whichever scene you would like to add this to. Then click the **plus sign** to add a new source and choose to add a new **Browser source**. 
+
+![Add a new browser source](./images/2023-05-0911_56_50-Clipboard.png)
+
+Then on the popup window, give your new source a name so you can identify it.
+
+![Give the browser source a name](./images/2023-05-2016_09_37-Clipboard.png)
+
+On the next popup you should blank out the **Custom CSS** property. For the **URL** you will supply the full URL to the `random-number.html` file such as `https://youcancallmec00kie.github.io/random-number.html` (to use the default options) or `https://youcancallmec00kie.github.io/random-number.html?maxNumber=200` (to supply your own options). You will likely want to check the option to **Refresh browser when scene becomes active** - depending on how you intend to use the widget.
+
+![Configure the source](./images/2023-05-2016_14_40-Clipboard.png)
+
 ## Follow Button
 
 The follow button is intended as a polite nudge for viewers to follow your channel. 

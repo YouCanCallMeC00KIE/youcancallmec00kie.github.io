@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            body 
+            { 
+                overflow: hidden;
+            }
+
+            .panel
+            {
+                height: 100%;
+                width: 100%;
+                background-color: rgba( 255, 255, 255, 255 );
+                font-size: 50vw;
+                text-align: center;
+            }
+
+            .hidden 
+            {
+                display: none;
+            }
+        </style>
+        <script>
+
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams( queryString );
+
+            var maxNumber = 100;
+
+            if( urlParams.has( 'maxNumber' ) )
+            {
+                maxNumber = urlParams.get( 'maxNumber' );
+            }
+
+            function onLoad()
+            {
+                generateNumber(); 
+            }
+
+            function generateNumber()
+            {
+                document.getElementsByClassName( 'randomNumber' )[0].innerHTML = getRandomInt( maxNumber );
+            }
+
+            //max number of 100 we want to generate 1-100 and not 0-99 so add 1 to the gen number
+            function getRandomInt( max ) {
+                return Math.floor( Math.random() * max ) + 1;
+            }
+
+            window.onload = onLoad;
+        </script>
+    </head>
+    <body>
+        <div class="panel randomNumber">
+        </div>
+    </body>
+</html>
